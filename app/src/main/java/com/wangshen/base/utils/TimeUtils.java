@@ -5,6 +5,7 @@ package com.wangshen.base.utils;
  */
 public class TimeUtils {
     public static String longTime(long time){
+
         String timer=null;
         if (time<3600000){
             if (time/60000==0){
