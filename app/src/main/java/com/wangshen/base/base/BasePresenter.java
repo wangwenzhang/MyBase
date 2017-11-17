@@ -8,8 +8,8 @@ import io.reactivex.disposables.Disposable;
  * Created by wangwenzhang on 2017/11/9.
  */
 
-public class BasePresenter <T extends BaseView>{
-    protected T baseview;//泛型 view  所有的view都要继承BaseView
+public class BasePresenter <V extends BaseView>{
+    protected V baseview;//泛型 view  所有的view都要继承BaseView
     protected CompositeDisposable mCompositeSubscription;//rxjava 存放观察者
 
     protected void addSubscription(Disposable disposable){//添加观察者
@@ -23,7 +23,7 @@ public class BasePresenter <T extends BaseView>{
             mCompositeSubscription.dispose();
         }
     }
-    public void attachView(T view){//绑定view
+    public void attachView(V view){//绑定view
         this.baseview=view;
     }
 
