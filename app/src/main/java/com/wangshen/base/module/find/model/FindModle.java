@@ -1,13 +1,10 @@
 package com.wangshen.base.module.find.model;
 
-import com.wangshen.base.base.BaseModle;
-
 /**
+ * 暂时以数据模型作为M层，正常应是获取数据为M层，为了简化获取数据写在P层
  * Created by wangwenzhang on 2017/11/9.
  */
 
-public class FindModle implements BaseModle {
-    /**
-    *
-    */
+public class FindModle  {
+
 }

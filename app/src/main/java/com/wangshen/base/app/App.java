@@ -1,6 +1,7 @@
 package com.wangshen.base.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.wangshen.base.utils.LogUtils;
 
@@ -10,9 +11,11 @@ import com.wangshen.base.utils.LogUtils;
  */
 
 public class App extends Application {
+    public static Context AppContext;
     @Override
     public void onCreate() {
         super.onCreate();
         LogUtils.isShow=true;
+        AppContext = getApplicationContext();
     }
 }

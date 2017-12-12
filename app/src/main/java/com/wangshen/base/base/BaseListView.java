@@ -1,13 +1,13 @@
 package com.wangshen.base.base;
 
-
+import java.util.List;
 
 /**
- * Created by wangwenzhang on 2017/11/9.
- * 所有的普通View基类
+ * 创建者： wangwenzhang 时间： 2017/12/11.
+ * 所有列表视图的View 基类
  */
 
-public interface BaseView<P> {
+public interface BaseListView <P>{
     /**
      * 显示加载动画
      */
@@ -27,6 +27,11 @@ public interface BaseView<P> {
      * 设置 presenter
      */
     void setPresenter(P presenter);
+
+    /**
+     * 设置适配器
+     */
+    void onSetAdapter(List<?> list);
 
     /**
      * 加载完毕

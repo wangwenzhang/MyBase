@@ -13,10 +13,10 @@ import android.view.ViewGroup;
  * Created by wangwenzhang on 2017/11/9.
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView<P>{
     protected  P presenter;
     protected Activity activity;
-    protected String TAG=getClass().getName();
+    protected String TAG=getClass().getSimpleName();
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -33,20 +33,35 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
-        setPresenter();
         getData();
+        setPresenter(presenter);
     }
 
-    public abstract void initView();//初始化布局
-    public abstract void getData();//初始化布局
-    public abstract int getLayout();//设置布局
-    public abstract void setPresenter();//初始化Presenter
+    /**
+     * 初始化布局
+     */
+    public abstract void initView();
+
+    /**
+     * 获取数据
+     */
+    public abstract void getData();
+
+    /**
+     * 设置布局文件id
+     * @return
+     */
+    public abstract int getLayout();
+
+    /**
+     * 布局销毁 调用presenter置空view，防止内存溢出
+     */
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (presenter!=null){
-            presenter.detachView();//布局销毁 调用presenter置空view，防止内存溢出
+            presenter.detachView();
         }
     }
 }

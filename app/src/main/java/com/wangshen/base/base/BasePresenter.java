@@ -29,5 +29,6 @@ public class BasePresenter <V extends BaseView>{
 
     public void detachView(){//销毁view
         this.baseview=null;
+        unSubscription();
     }
 }
