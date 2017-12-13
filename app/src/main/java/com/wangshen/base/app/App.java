@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.wangshen.base.utils.LogUtils;
+import com.wangshen.base.utils.SharedPreferencesUtil;
 
 /**
  * APP初始化类
@@ -17,5 +18,12 @@ public class App extends Application {
         super.onCreate();
         LogUtils.isShow=true;
         AppContext = getApplicationContext();
+        initPrefs();
+    }
+    /**
+     * 初始化SharedPreference
+     */
+    protected void initPrefs() {
+        SharedPreferencesUtil.init(getApplicationContext(), getPackageName() + "_preference", Context.MODE_MULTI_PROCESS);
     }
 }

@@ -34,12 +34,10 @@ import java.util.Set;
  * Created by lfh on 2016/8/13.
  */
 public class SharedPreferencesUtil {
-
     private static SharedPreferencesUtil prefsUtil;
     public Context context;
     public SharedPreferences prefs;
     public SharedPreferences.Editor editor;
-
     public synchronized static SharedPreferencesUtil getInstance() {
         return prefsUtil;
     }
@@ -53,7 +51,6 @@ public class SharedPreferencesUtil {
 
     private SharedPreferencesUtil() {
     }
-
 
     public boolean getBoolean(String key, boolean defaultVal) {
         return this.prefs.getBoolean(key, defaultVal);

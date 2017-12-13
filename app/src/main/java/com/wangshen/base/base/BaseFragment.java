@@ -33,8 +33,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
-        getData();
         setPresenter(presenter);
+        getData();
     }
 
     /**
