@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:theme="@style/AppTheme"
-            android:name=".module.find.ui.FindActivity">
+            android:name=".module.find.ui.FindMvpActivity">
 
         </activity>
     </application>

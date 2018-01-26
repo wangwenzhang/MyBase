@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wangshen.base.module.find.ui.FindActivity;
+import com.wangshen.base.module.find.ui.FindMvpActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, FindActivity.class));
+                startActivity(new Intent(MainActivity.this, FindMvpActivity.class));
             }
         });
     }

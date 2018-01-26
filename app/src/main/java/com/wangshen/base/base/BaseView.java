@@ -26,7 +26,7 @@ public interface BaseView<P> {
     /**
      * 设置 presenter
      */
-    void setPresenter(P presenter);
+    void setPresenter();
 
     /**
      * 加载完毕

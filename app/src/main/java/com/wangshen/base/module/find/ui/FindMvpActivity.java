@@ -6,7 +6,7 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
 import com.wangshen.base.R;
-import com.wangshen.base.base.BaseActivity;
+import com.wangshen.base.base.BaseMvpActivity;
 import com.wangshen.base.module.find.presenter.FindPresenter;
 import com.wangshen.base.module.find.view.FindView;
 
@@ -15,7 +15,7 @@ import com.wangshen.base.module.find.view.FindView;
  * Created by wangwenzhang on 2017/11/9.
  */
 
-public class FindActivity extends BaseActivity<FindPresenter> implements FindView{
+public class FindMvpActivity extends BaseMvpActivity<FindPresenter> implements FindView{
     SlidrConfig mSlidrConfig;
     SlidrConfig.Builder mBuilder;
     @Override
@@ -61,7 +61,7 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindVie
     }
 
     @Override
-    public void setPresenter(FindPresenter presenter) {
+    public void setPresenter() {
         if (null==presenter){
             this.presenter=new FindPresenter();
         }

@@ -1,14 +1,16 @@
 package com.wangshen.base.base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 /**
- * 创建者： wangwenzhang 时间： 2018/1/26.
+ * Activity的基类
+ * Created by wangwenzhang on 2017/11/9.
  */
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseMvpActivity<P extends BasePresenter>extends AppCompatActivity implements BaseView<P> {
+    protected P presenter;
     protected String TAG=getClass().getSimpleName();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -16,7 +18,7 @@ public abstract class BaseActivity extends Activity {
         setContentView(getLayout());
         initView();
         getData();
-        initListener();
+        setPresenter();
     }
 
     /**
@@ -34,8 +36,16 @@ public abstract class BaseActivity extends Activity {
      * @return
      */
     public abstract int getLayout();
+
     /**
-     * 设置控件点击事件
+     * 布局销毁 调用presenter置空view，防止内存溢出
      */
-    public abstract void initListener();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter!=null){
+            presenter.detachView();
+        }
+    }
+
 }

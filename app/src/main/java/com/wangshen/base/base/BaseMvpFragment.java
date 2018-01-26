@@ -13,7 +13,8 @@ import android.view.ViewGroup;
  * Created by wangwenzhang on 2017/11/9.
  */
 
-public abstract class BaseFragment extends Fragment{
+public abstract class BaseMvpFragment<P extends BasePresenter> extends Fragment implements BaseView<P>{
+    protected  P presenter;
     protected Activity activity;
     protected String TAG=getClass().getSimpleName();
     @Override
@@ -32,8 +33,8 @@ public abstract class BaseFragment extends Fragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        setPresenter(presenter);
         getData();
-        initListener();
     }
 
     /**
@@ -53,7 +54,14 @@ public abstract class BaseFragment extends Fragment{
     public abstract int getLayout();
 
     /**
-     * 设置控件点击事件
+     * 布局销毁 调用presenter置空view，防止内存溢出
      */
-    public abstract void initListener();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (presenter!=null){
+            presenter.detachView();
+        }
+    }
 }
